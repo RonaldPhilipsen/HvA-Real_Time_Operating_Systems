@@ -1,7 +1,7 @@
 #pragma once
-#include "tasks.h"
+#include "tasks.hpp"
 
-void* taskOne(void*) {
+void* TaskOne(void*) {
 	while (1) {
 		for (int i = 0; i < 5; i++) {
 			for (int j = 1; j <= 8; j++) {
@@ -13,7 +13,7 @@ void* taskOne(void*) {
 	}
 }
 
-void* taskTwo(void*) {
+void* TaskTwo(void*) {
 	while (1) {
 		for (int i = 0; i < 5; i++) {
 			for (int j = 1; j <= 8; j++) {
@@ -25,7 +25,7 @@ void* taskTwo(void*) {
 	}
 }
 
-void* taskThree(void*) {
+void* TaskThree(void*) {
 	for (int i = 0; i < 5; i++) {
 		for (int j = 1; j <= 8; j++) {
 			printf("taak 3 %i\n", j);
@@ -33,10 +33,9 @@ void* taskThree(void*) {
 				for (int n = 0; n <= 10000; n++);
 		}
 	}
-
 }
 
-void* taskFour(void*) {
+void* TaskFour(void*) {
 	for (int i = 0; i < 5; i++) {
 		for (int j = 1; j <= 8; j++) {
 			printf("taak 4 %i\n", j);
@@ -48,5 +47,28 @@ void* taskFour(void*) {
 
 
 
+void* Thread1(void*)
+{
+	struct periodic_info info;
 
+	printf("Thread 1 period 500ms\n");
+	make_periodic(500000, &info);
+	while (1) {
+		t1_count++;
+		wait_period(&info);
+	}
+	return NULL;
+}
 
+void* Thread2(void*)
+{
+	struct periodic_info info;
+
+	printf("Thread 2 period 1300ms\n");
+	make_periodic(1300000, &info);
+	while (1) {
+		t2_count++;
+		wait_period(&info);
+	}
+	return NULL;
+}
