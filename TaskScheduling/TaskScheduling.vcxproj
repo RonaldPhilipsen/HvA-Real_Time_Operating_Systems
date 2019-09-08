@@ -79,8 +79,10 @@
       <DeploymentContent>false</DeploymentContent>
       <FileType>CppCode</FileType>
     </ClCompile>
+    <ClCompile Include="tasks.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="tasks.h" />
   </ItemGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|ARM'">
     <Link>
