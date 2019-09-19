@@ -47,28 +47,12 @@ void* TaskFour(void*) {
 
 
 
-void* Thread1(void*)
+void Thread1(union sigval val)
 {
-	struct periodic_info info;
-
 	printf("Thread 1 period 500ms\n");
-	make_periodic(500000, &info);
-	while (1) {
-		t1_count++;
-		wait_period(&info);
-	}
-	return NULL;
 }
 
-void* Thread2(void*)
+void Thread2(union sigval val)
 {
-	struct periodic_info info;
-
 	printf("Thread 2 period 1300ms\n");
-	make_periodic(1300000, &info);
-	while (1) {
-		t2_count++;
-		wait_period(&info);
-	}
-	return NULL;
 }
